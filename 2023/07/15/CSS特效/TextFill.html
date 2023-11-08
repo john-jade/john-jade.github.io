@@ -1,0 +1,83 @@
+<!--
+ * @Date: 2023-07-15 16:56:23
+ * @LastEditors: John1421Jade 3282726365@qq.com
+ * @LastEditTime: 2023-07-15 17:23:35
+ * @FilePath: \blob\source\_posts\CSS特效\TextFill.html
+--><!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: black;
+        }
+        
+        h1 {
+            color: white;
+            font-family: Helvetica;
+            font-size: 150px;
+            letter-spacing: -4px;
+            /* 位置设置为相对位置，允许对伪元素进行定位 */
+            position: relative;
+            /* 初始颜色设置为透明 */
+            color: transparent;
+            /* 设置从白色到透明的线性渐变，开始位置到一半的位置为白色，一半的位置到最后是白色逐渐为透明 */
+            background-image: linear-gradient(to right, white, white, transparent);
+            /* 设置背景大小为200%宽，100%高 */
+            background-size: 200% 100%;
+            background-repeat: no-repeat;
+            /* 设置为text，将背景图像剪辑为文本 */
+            -webkit-background-clip: text;
+            background-position-x: 200%;
+            /* 定义动画，动画持续2秒，有一个ease-in-out计时功能，在页面加载2秒后开始。forward值确保保留最终的动画状态 */
+            animation: 2s fillup ease-in-out 2s forwards;
+        }
+        
+        h1::after {
+            /* 设置伪元素的文本内容为“Incredible” */
+            content: 'Incredible';
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* 设置文本周围2像素的描边 */
+            -webkit-text-stroke: 2px;
+            /* 设置描边颜色为白色 */
+            -webkit-text-stroke-color: white;
+            /* 设置填充颜色为透明 */
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            /* 定义动画，持续2秒，立即开始。forward值确保保留最终的动画状态。 */
+            animation: 2s fadein ease-in-out forwards;
+        }
+        
+        @keyframes fillup {
+            from {
+                background-position-x: 200%;
+            }
+            to {
+                background-position-x: 0%;
+            }
+        }
+        
+        @keyframes fadein {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Incredible</h1>
+
+
+<script type="text/javascript" charset="utf-8" src="/js/lazyload-plugin/lazyload.intersectionObserver.min.js"></script></body></html>
